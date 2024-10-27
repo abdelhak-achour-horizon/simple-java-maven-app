@@ -3,22 +3,23 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        echo 'Build Demo Application'
-        sh 'sh `mvn  compile`'
+        echo 'Building Demo Application'
+        sh 'mvn clean compile'
       }
     }
 
     stage('Test') {
       steps {
-        sh 'sh `mvn test`'
+        echo 'Testing Demo Application'
+        sh 'mvn test'
       }
     }
 
     stage('Deliver') {
       steps {
-        sh 'sh `./jenkins/scripts/deliver.sh`'
+        echo 'Delivering Demo Application'
+        sh './jenkins/scripts/deliver.sh'
       }
     }
-
   }
 }
